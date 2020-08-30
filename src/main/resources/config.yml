@@ -1,0 +1,86 @@
+###############################################################################################
+#                                                                                             #
+#    _   _             __  __       _           _____                                         #
+#   | \ | |           |  \/  |     | |         / ____|                                        #
+#   |  \| | ___ ______| \  / | ___ | |__ _____| (___  _ __   __ ___      ___ __   ___ _ __    #
+#   | . ` |/ _ \______| |\/| |/ _ \| '_ \______\___ \| '_ \ / _` \ \ /\ / / '_ \ / _ \ '__|   #
+#   | |\  | (_) |     | |  | | (_) | |_) |     ____) | |_) | (_| |\ V  V /| | | |  __/ |      #
+#   |_| \_|\___/      |_|  |_|\___/|_.__/     |_____/| .__/ \__,_| \_/\_/ |_| |_|\___|_|      #
+#                                                    | |                                      #
+#                                                    |_|                                      #
+#                                                                                             #
+#                 SOURCE CODE: https://github.com/DerFrZocker/No-Mob-Spawner                  #
+#              BUG REPORTS: https://github.com/DerFrZocker/No-Mob-Spawner/issues              #
+#                         Donation: https://www.paypal.me/DerFrZocker                         #
+#                      Patreon: https://www.patreon.com/woollydevelopment                     #
+#                                                                                             #
+###############################################################################################
+
+
+###############################################################################################
+#                                                                                             #
+#       NOTE: PLEASE KEEP IN MIND, THAT THE PLUGIN ONLY AFFECTS NEWLY GENERATED CHUNKS        #
+#                                                                                             #
+###############################################################################################
+
+
+
+# Here you can configuration which spawner should get blocked in which world,
+# in 'active-in-world' you can set to which world the configuration should be applied,
+# you can apply one configuration to one or multiple worlds.
+#
+# The 'action' decides what should happen with the spawner
+#   Actions:
+#     'KEEP': The block which was on the position, the spawner is, gets replaced -> as if the spawner was never set
+#     'REPLACE': The spawner gets replaced with the material which is set with 'replace-material'
+#
+# if you don't specific an action, than the 'KEEP' action gets applied
+# if you choose 'REPLACE' as action, you must specific a 'replace-material',
+# if you don't specific one 'CAVE_AIR' (or in older Minecraft versions 'AIR') gets applied
+#
+#
+# in the 'types' section you can specic which mob spawner type should get blocked and which not,
+#   'true' means the spawner gets placed
+#   'false' means the spawner gets blocked
+#
+# If a mob spawner gets generated and it is not in the 'types' section, than it gets placed
+configurations:
+  dummy-string:
+    active-in-world: "dummy-world" # Only in one world
+    action: "REPLACE"
+    replace-material: "YELLOW_STAINED_GLASS"
+    types:
+      ZOMBIE: false
+      SKELETON: false
+      SPIDER: false
+      CAVE_SPIDER: false
+      SILVERFISH: false
+      BLAZE: false
+      MAGMA_CUBE: false
+  dummy-string-2:
+    active-in-world: # multiple worlds
+     - "dummy-world-2"
+     - "dummy-world-3"
+    action: "KEEP"
+    types:
+      ZOMBIE: true
+      SKELETON: false
+      SPIDER: false
+      CAVE_SPIDER: true
+      SILVERFISH: false
+      BLAZE: false
+      MAGMA_CUBE: false
+
+# The default configuration gets applied to all worlds,
+# if the world does not have a configuration in the 'configurations' section
+default-configuration:
+  action: "REPLACE"
+  replace-material: "YELLOW_STAINED_GLASS"
+  types:
+    ZOMBIE: true
+    SKELETON: true
+    SPIDER: true
+    CAVE_SPIDER: true
+    SILVERFISH: true
+    BLAZE: true
+    MAGMA_CUBE: true
